@@ -12,7 +12,11 @@ echo "\033[0;32m"'            |___/                                     '"\033[0
 cd $(dirname "${0}")
 BASEDIR="$(pwd -L)/.."
 cd -
+
 echo "\033[0;34mSymlinking .gitconfig\033[0m"
 ln -s "$BASEDIR/git/gitconfig" ~/.gitconfig
+
+echo "\033[0;34mSymlinking .vimrc\033[0m"
+ln -s "$BASEDIR/vim/vimrc" ~/.vimrc
 
 curl -s -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
