@@ -1,0 +1,16 @@
+[user]
+	name = Alan Morey
+	email = morey.alan@gmail.com
+
+[alias]
+	co = checkout
+	ci = commit
+        s = status -sb --ignore-submodules=untracked
+	st = status -sb
+	count = shortlog -sn
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
