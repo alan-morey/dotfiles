@@ -5,8 +5,14 @@
 [alias]
 	co = checkout
 	ci = commit
-        s = status -sb --ignore-submodules=untracked
+	s = status -sb --ignore-submodules=untracked
 	st = status -sb
+	br = branch
+	di = diff
+	unstage = reset HEAD --
+    undo-commit = reset --soft HEAD^
+    meld = !~/bin/git-meld.pl
+    br-desc = !~/bin/git-branch-desc.pl
 	count = shortlog -sn
 
 [color]
@@ -14,3 +20,6 @@
 	status = auto
 	branch = auto
 	ui = true
+
+[credential]
+	helper = cache
