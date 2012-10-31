@@ -1,0 +1,9 @@
+set nowrap
+set autoindent
+set cindent
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set formatoptions=croq
+set cinoptions=>4,:4,=4,b1,g0,h4,i4,(0,W4
