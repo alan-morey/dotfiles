@@ -1,4 +1,4 @@
 #!/bin/sh
 
-pulseaudo -k
+pulseaudio -k
 sudo alsa force-reload
