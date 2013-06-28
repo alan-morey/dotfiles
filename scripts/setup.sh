@@ -41,7 +41,7 @@ cd -
 
 #echo "\033[0;34mSymlinking .gitconfig\033[0m"
 #ln -s "$BASEDIR/git/gitconfig" ~/.gitconfig
-symlinkConfig git/gitconfig ~/.gitcofnig
+symlinkConfig git/gitconfig ~/.gitconfig
 
 
 #echo "\033[0;34mSymlinking .vim and .vimrc\033[0m"
