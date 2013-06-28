@@ -14,28 +14,55 @@
 " Turn off vi compatibility
 set nocompatible
 
-filetype off
 
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+endif
+
+
+" Bundles {{{
+filetype off
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle "gmarik/vundle"
 
 " Color Scheme
-Bundle "nanotech/jellybeans.vim"
+Bundle "tomasr/molokai"
 
-Bundle 'vim-ruby/vim-ruby'
+Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
-Bundle 'ejholmes/vim-forcedotcom'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'mbbill/undotree'
 
+" }}}
 
 " General {{{
-
+set background=dark
 set fileencodings=utf-8,iso-8859-1
 " Set color scheme
-colorscheme jellybeans
+colorscheme molokai
 
-" Remove toolbar
+set mouse=a       " Automatically enable mouse usage
+set mousehide     " Hide mouse while typing
+
+set viewoptions=folds,options,cursor,unix,slash " Better Unix/Windows compatibility
+
+" Always change the current directory to that of file
+" currently being edited
+function CHANGE_CURR_DIR()
+  let _dir = expand("%:p:h")
+  exec "cd " . _dir
+  unlet _dir
+endfunction 
+
+autocmd BufEnter * call CHANGE_CURR_DIR()
+
+"Remove toolbar
 set guioptions-=T
 
 set hidden
@@ -136,7 +163,8 @@ let g:systastic_auto_jump=1
 let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 " Status line format
-set statusline=%<%f\ (%n)%(\ [%W%H%M%R%Y]%)%=%([%b,0x%B]%)\ %-14.(%l,%c%V%)\ %P
+set statusline=%<%f\    " Filename
+set statusline=(%n)%(\ [%W%H%M%R%Y]%)%=%([%b,0x%B]%)\ %-14.(%l,%c%V%)\ %P
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -233,15 +261,8 @@ filetype indent on
 set encoding=utf-8
 
 
-" Always change the current directory to that of file
-" currently being edited
-function CHANGE_CURR_DIR()
-  let _dir = expand("%:p:h")
-  exec "cd " . _dir
-  unlet _dir
-endfunction 
-
-autocmd BufEnter * call CHANGE_CURR_DIR()
+" Always switch to the current file directory
+autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9]*://" | lcd %:p:h | endif
 
 " }}}
 " {{{ Auto Commands
