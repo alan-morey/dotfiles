@@ -35,6 +35,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
+alias meld="~/Applications/meld-1.7.3/bin/meld"
 alias mvn="mvn-color"
 
 export TOOLS_PATH=~/Tools
