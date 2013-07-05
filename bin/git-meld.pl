@@ -21,25 +21,25 @@ use File::Basename;
 use Cwd;
 
 sub safe_cmd {
-	my $cmd = shift;
-	my $output = `$cmd`;
-	if ($? != 0) {
-		die("$cmd failed with exit code $?");
-	}
-	return $output;
+    my $cmd = shift;
+    my $output = `$cmd`;
+    if ($? != 0) {
+        die("$cmd failed with exit code $?");
+    }
+    return $output;
 }
 
 sub safe_system {
-	system(@_) == 0 || die ("system(" . @_ . ") failed!");
-	return 0;
+    system(@_) == 0 || die ("system(" . @_ . ") failed!");
+    return 0;
 }
 
 sub trim($)
 {
-	my $string = shift;
-	$string =~ s/^\s+//;
-	$string =~ s/\s+$//;
-	return $string;
+    my $string = shift;
+    $string =~ s/^\s+//;
+    $string =~ s/\s+$//;
+    return $string;
 }
 
 # Gets the value of the given config name from git if it exists, otherwise
@@ -80,15 +80,15 @@ sub parse_cmd(@)
 
     # Get options to be sent to diff.  These all start with --
     while (my $arg = shift(@args)) {
-	    if ($arg =~ m/^-/ && $arg ne "--") {
+        if ($arg =~ m/^-/ && $arg ne "--") {
             $arg =~ m/^-+([^=]+)(=(.*))?$/;
-	        $opts{$1} = $3;
-		    $diff_opts += " \"$arg\"";
-	    }
-	    else {
-		    unshift(@args, $arg);
-		    last;
-	    }
+            $opts{$1} = $3;
+            $diff_opts += " \"$arg\"";
+        }
+        else {
+            unshift(@args, $arg);
+            last;
+        }
     }
 
     my $source_tree = "";
@@ -104,19 +104,19 @@ sub parse_cmd(@)
             $dest_tree = $2;
         }
         elsif ($commit1 =~ m/^(.*)\.\.(.*)$/) {
-	        $source_tree = $1;
-	        $dest_tree = $2;
+            $source_tree = $1;
+            $dest_tree = $2;
         }
         else {
-	        $source_tree = $commit1;
-	        if (scalar @args == 0) {
-	        }
-	        else {
-		        my $commit2 = shift(@args);
-		        if ($commit2 ne "--") {
-			        $dest_tree = $commit2;
-		        }
-	        }
+            $source_tree = $commit1;
+            if (scalar @args == 0) {
+            }
+            else {
+                my $commit2 = shift(@args);
+                if ($commit2 ne "--") {
+                    $dest_tree = $commit2;
+                }
+            }
         }
     }
     return ($source_tree, $dest_tree, \%opts);
@@ -147,7 +147,7 @@ sub copy_files_named_tree($$$) {
         return;
     }
     my $escaped_file_list = join(" ", map{shell_escape($_)} @$file_list);
-    safe_cmd("cd \$(git rev-parse --show-toplevel) && git archive $tree $escaped_file_list | tar -x -C \"$out_dir\"");
+    safe_cmd("cd \"\$(git rev-parse --show-toplevel)\" && git archive $tree $escaped_file_list | tar -x -C \"$out_dir\"");
 }
 
 # Links the files given as a list in the first argument from the working
@@ -187,7 +187,7 @@ if (exists($opts->{"cached"}) || exists($opts->{"staged"})) {
 # At this point we have parsed two commits and want to diff them
 my $git_dir = trim(safe_cmd("git rev-parse --show-cdup"));
 if ($git_dir eq "") {
-	$git_dir = ".";
+    $git_dir = ".";
 }
 
 my $tmp_dir=trim(safe_cmd("mktemp -d -t git-meld.XXXXXX"));
