@@ -80,7 +80,7 @@ fi
 #echo "\033[0;34mSymlinking .zshrc\033[0m"
 #ln -s "$BASEDIR/zsh/zshrc" ~/.zshrc
 symlinkConfig zsh/zshrc ~/.zshrc
-
+symlinkConfig zsh/zshenv ~/.zshenv
 
 if [ $OSX ] ; then
 	SUBLIME="$HOME/Library/Application Support/Sublime Text 2/Packages/User"

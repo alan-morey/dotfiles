@@ -38,8 +38,3 @@ source $ZSH/oh-my-zsh.sh
 alias meld="~/Applications/meld-1.7.3/bin/meld"
 alias mvn="mvn-color"
 
-export TOOLS_PATH=~/Tools
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-export GRADLE_HOME=$TOOLS_PATH/gradle-1.6
-export GROOVY_HOME=$TOOLS_PATH/groovy-2.1.5
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:~/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin
