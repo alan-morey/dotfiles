@@ -15,7 +15,7 @@ echo "\033[0;32m"'            |___/                                     '"\033[0
 uname -s | grep -q "_NT-" && export WINDOWS=1
 
 symlinkConfig() {
-	src="~/dotfiles/$1"
+	src="$HOME/dotfiles/$1"
 	dest=$2
 
 	echo "\033[0;34mSymlinking $src ...\033[0m"
@@ -38,17 +38,10 @@ BASEDIR="$(pwd -L)/.."
 cd -
 
 
+symlinkConfig git/gitconfig $HOME/.gitconfig
 
-#echo "\033[0;34mSymlinking .gitconfig\033[0m"
-#ln -s "$BASEDIR/git/gitconfig" ~/.gitconfig
-symlinkConfig git/gitconfig ~/.gitconfig
-
-
-#echo "\033[0;34mSymlinking .vim and .vimrc\033[0m"
-#ln -s "$BASEDIR/vim/vim" ~/.vim
-#ln -s "$BASEDIR/vim/vimrc" ~/.vimrc
-symlinkConfig vim/vim ~/.vim
-symlinkConfig vim/vimrc ~/.vimrc
+symlinkConfig vim/vim $HOME/.vim
+symlinkConfig vim/vimrc $HOME/.vimrc
 
 
 if [ -d ~/.vim/bundle/vundle ] ; then
@@ -56,31 +49,25 @@ if [ -d ~/.vim/bundle/vundle ] ; then
 	vim +BundleInstall! +qall
 else
 	echo "\033[0;33mClone Vundle plugin from github.\033[0m"
-	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+	git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 	vim +BundleInstall +qall
 fi
 
-#echo "\033[0;34mSymlinking .bin\033[0m"
-#ln -s "$BASEDIR/bin" ~/bin
-symlinkConfig bin ~/bin
+symlinkConfig bin $HOME/bin
 
 if [ ! -d ~/oh-my-zsh ] ; then
 	curl -s -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
 
 MY_ZSH_THEME=morey.zsh-theme
-if [ -f ~/.oh-my-zsh/themes/morey.zsh-theme ] ; then
+if [ -f $HOME/.oh-my-zsh/themes/morey.zsh-theme ] ; then
     echo "\033[0;33m$MY_ZSH_THEME already installed.\033[0m"
 else
-    #echo "\033[0;33mSymlinking $MY_ZSH_THEME to oh-my-zsh themes.\033[0m"
-    #ln -s "$BASEDIR/zsh/$MY_ZSH_THEME" ~/.oh-my-zsh/themes/$MY_ZSH_THEME
-    symlinkConfig zsh/$MY_ZSH_THEME ~/.oh-my-zsh/themes/$MY_ZSH_THEME
+    symlinkConfig zsh/$MY_ZSH_THEME $HOME/.oh-my-zsh/themes/$MY_ZSH_THEME
 fi
 
-#echo "\033[0;34mSymlinking .zshrc\033[0m"
-#ln -s "$BASEDIR/zsh/zshrc" ~/.zshrc
-symlinkConfig zsh/zshrc ~/.zshrc
-symlinkConfig zsh/zshenv ~/.zshenv
+symlinkConfig zsh/zshrc $HOME/.zshrc
+symlinkConfig zsh/zshenv $HOME/.zshenv
 
 if [ $OSX ] ; then
 	SUBLIME="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
