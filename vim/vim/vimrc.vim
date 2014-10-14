@@ -29,14 +29,16 @@ Bundle "gmarik/vundle"
 
 " Color Scheme
 Bundle "tomasr/molokai"
+Bundle "altercation/vim-colors-solarized"
 
+Bundle "tpope/vim-fugitive"
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
+Bundle "bling/vim-airline"
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'mbbill/undotree'
 
 " }}}
@@ -45,7 +47,8 @@ Bundle 'mbbill/undotree'
 set background=dark
 set fileencodings=utf-8,iso-8859-1
 " Set color scheme
-colorscheme molokai
+"colorscheme molokai
+colorscheme solarized
 
 set mouse=a       " Automatically enable mouse usage
 set mousehide     " Hide mouse while typing
@@ -64,7 +67,11 @@ autocmd BufEnter * call CHANGE_CURR_DIR()
 
 "Remove toolbar
 set guioptions-=T
-
+set guioptions-=m
+set guioptions-=e
+set guioptions-=r
+set guioptions-=l
+      
 set hidden
 
 set undodir=~/.vim/undodir
@@ -124,6 +131,8 @@ set scrolljump=5
 " Indicate jump out of the screen when 3 lines before end of screen
 set scrolloff=5
 
+set sidescrolloff=5
+
 if has("gui_running")
   " Show line number for each line if GUI
   set number
@@ -132,7 +141,7 @@ if has("gui_running")
   set showtabline=2
 
   " Set font Courier New, Bold, Size 11
-"  set guifont=Courier_New:h11:b:cANSI
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 13
 endif
 
 " }}}
@@ -161,13 +170,15 @@ set laststatus=2
 let g:syntastic_enable_signs=1
 let g:systastic_auto_jump=1
 let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Status line format
-set statusline=%<%f\    " Filename
-set statusline=(%n)%(\ [%W%H%M%R%Y]%)%=%([%b,0x%B]%)\ %-14.(%l,%c%V%)\ %P
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline=%<%f\    " Filename
+"set statusline=(%n)%(\ [%W%H%M%R%Y]%)%=%([%b,0x%B]%)\ %-14.(%l,%c%V%)\ %P
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 
 " Show mode in status line
@@ -212,7 +223,8 @@ endif
 " }}}
 " Mappings {{{
 
-let mapleader=","
+nnoremap <Space> <nop>
+let mapleader="\<Space>"
 
 " Make CTRL+L clear hightlight as well as rediraw
 noremap <C-L> :nohls<CR><C-L>
@@ -236,10 +248,10 @@ nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+noremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
@@ -280,3 +292,5 @@ if has("autocmd")
     \ endif
 endif
 " }}}
+
+let NERDTreeQuitOnOpen=1
