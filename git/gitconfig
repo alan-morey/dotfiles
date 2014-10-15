@@ -1,25 +1,39 @@
 [user]
-	name = Alan Morey
-	email = morey.alan@gmail.com
+    name = Alan Morey
+    email = morey.alan@gmail.com
+
+[merge]
+    tool = meld
+
+[mergetool]
+    keepBackup = false
+    prompt = false
 
 [alias]
-	co = checkout
-	ci = commit --verbose
-	s = status -sb --ignore-submodules=untracked
-	st = status -sb
-	br = branch
-	di = diff
-	unstage = reset HEAD --
+    co = checkout
+    ci = commit --verbose
+    s = status -sb --ignore-submodules=untracked
+    st = status -sb
+    br = branch
+    di = diff
+    unstage = reset HEAD --
     undo-commit = reset --soft HEAD^
     meld = !~/bin/git-meld.pl
     br-desc = !~/bin/git-branch-desc.pl
-	count = shortlog -sn
+    count = shortlog -sn
+    stashu = stash -u
 
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = true
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
 
 [credential]
-	helper = cache
+    helper = cache --timeout 7200
+
+[rerere]
+    enabled = true
+
+[core]
+    excludesfile = ~/.gitignore_global

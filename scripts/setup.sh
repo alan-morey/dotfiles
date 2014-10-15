@@ -39,19 +39,14 @@ cd -
 
 
 symlinkConfig git/gitconfig $HOME/.gitconfig
+symlinkConfig git/global.gitignore $HOME/.gitignore_global
 
 symlinkConfig vim/vim $HOME/.vim
 symlinkConfig vim/vimrc $HOME/.vimrc
 
 
-if [ -d ~/.vim/bundle/vundle ] ; then
-	echo "\033[0;33mVundle plugin already installed\033[0m"
-	vim +BundleInstall! +qall
-else
-	echo "\033[0;33mClone Vundle plugin from github.\033[0m"
-	git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-	vim +BundleInstall +qall
-fi
+echo "\033[0;33mVundle plugin already installed\033[0m"
+vim +BundleInstall! +qall
 
 symlinkConfig bin $HOME/bin
 
