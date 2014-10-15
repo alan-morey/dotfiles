@@ -21,6 +21,11 @@ endif
 
 
 " Bundles {{{
+
+if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
+  !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+endif
+
 filetype off
 set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -30,13 +35,13 @@ Bundle "gmarik/vundle"
 " Color Scheme
 Bundle "tomasr/molokai"
 Bundle "altercation/vim-colors-solarized"
+Bundle "chriskempson/base16-vim"
 
 Bundle "tpope/vim-fugitive"
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
-"Bundle 'Lokaltog/vim-powerline'
 Bundle "bling/vim-airline"
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mbbill/undotree'
@@ -44,26 +49,12 @@ Bundle 'mbbill/undotree'
 " }}}
 
 " General {{{
-set background=dark
 set fileencodings=utf-8,iso-8859-1
-" Set color scheme
-"colorscheme molokai
-colorscheme solarized
 
 set mouse=a       " Automatically enable mouse usage
 set mousehide     " Hide mouse while typing
 
 set viewoptions=folds,options,cursor,unix,slash " Better Unix/Windows compatibility
-
-" Always change the current directory to that of file
-" currently being edited
-function CHANGE_CURR_DIR()
-  let _dir = expand("%:p:h")
-  exec "cd " . _dir
-  unlet _dir
-endfunction 
-
-autocmd BufEnter * call CHANGE_CURR_DIR()
 
 "Remove toolbar
 set guioptions-=T
@@ -71,6 +62,9 @@ set guioptions-=m
 set guioptions-=e
 set guioptions-=r
 set guioptions-=l
+
+set lines=40
+set columns=120
       
 set hidden
 
@@ -150,6 +144,14 @@ endif
 " Enable highlighting if color terminal or GUI
 if &t_Co > 2 || has("gui_running")
   syntax on
+  set background=dark
+  if !has("gui_running")
+    let g:solarized_termcolors = 256 
+    let base16colorspace=256
+"    set background=light
+  endif
+
+  colorscheme base16-eighties
 endif
 
 set cursorline
@@ -211,14 +213,6 @@ set foldmethod=marker
 
 " Fold Column
 set foldcolumn=2
-
-" }}}
-" Win32 {{{
-
-if has("win32")
-  source $VIMRUNTIME/mswin.vim
-  behave mswin
-endif
 
 " }}}
 " Mappings {{{
