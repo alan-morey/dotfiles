@@ -134,8 +134,11 @@ if has("gui_running")
   " Always show tabline if GUI
   set showtabline=2
 
-  " Set font Courier New, Bold, Size 11
-  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 13
+  if has("gui_macvim")
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline:h18
+  else
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 13
+  endif
 endif
 
 " }}}
