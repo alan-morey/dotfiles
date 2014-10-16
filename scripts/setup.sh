@@ -70,3 +70,6 @@ elif [ $LINUX ] ; then
 	SUBLIME="$HOME/.config/sublime-text-2/Packages/User"
 fi
 symlinkConfig sublime $SUBLIME
+
+POWERLINE_FONTS_INSTALL="$HOME/dotfiles/powerline-fonts/install.sh"
+[[ -s $POWERLINE_FONTS_INSTALL ]] && . $POWERLINE_FONTS_INSTALL
