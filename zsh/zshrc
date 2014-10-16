@@ -43,9 +43,10 @@ export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
 
 # Base16 Shell
 BASE16_SCHEME="eighties"
-BASE16_SHELL="$HOME/dotfiles/bin/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+BASE16_SHELL="$HOME/dotfiles/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/home/alan/.gvm/bin/gvm-init.sh" ]] && source "/home/alan/.gvm/bin/gvm-init.sh"
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!
+GVM_INIT=$HOME/.gvim/bin/gvm-init.sh
+[[ -s $GVM_INIT ]] && source $GVM_INIT 
