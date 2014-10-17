@@ -37,6 +37,7 @@ Bundle "tomasr/molokai"
 Bundle "altercation/vim-colors-solarized"
 Bundle "chriskempson/base16-vim"
 
+Bundle "ejholmes/vim-forcedotcom"
 Bundle "tpope/vim-fugitive"
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
@@ -56,12 +57,13 @@ set mousehide     " Hide mouse while typing
 
 set viewoptions=folds,options,cursor,unix,slash " Better Unix/Windows compatibility
 
-"Remove toolbar
-set guioptions-=T
-set guioptions-=m
-set guioptions-=e
-set guioptions-=r
-set guioptions-=l
+set guioptions-=T " Remove toolbar
+set guioptions-=m " Remove menu bar
+set guioptions-=e " Non-GUI tabs for showtabline
+set guioptions-=r " No right scrollbar
+set guioptions-=l " No left scrollbar
+set guioptions-=L " No left scrollbar, when vert split
+set guioptions+=c " Console dialogs
 
 set lines=40
 set columns=120
@@ -194,7 +196,7 @@ set showcmd
 
 set wildmenu
 
-set wildmode=list:full
+set wildmode=list,full
 
 " }}}
 " Editing Text {{{
@@ -248,7 +250,7 @@ nnoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
-noremap <right> <nop>
+inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
