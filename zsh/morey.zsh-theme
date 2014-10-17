@@ -15,7 +15,7 @@ ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg_bold[cyan]%} ↙"
 ZSH_THEME_GIT_PROMPT_DIVERGED="%{$fg_bold[yellow]%} ⇆"
 
 function prompt_char {
-    if [ $UID -eq 0 ]; then echo "%{$fg_bold[yellow]%}☢%{$reset_color%}"; else echo "%{$fg[green]%}⧐%{$reset_color%}"; fi
+    if [ $UID -eq 0 ]; then echo "%{$fg_bold[yellow]%}☢%{$reset_color%}"; else echo "%{$fg[green]%}%{$reset_color%}"; fi
 }
 
 PROMPT='%(?, ,%{$fg_bold[red]%}Fail ☣ $?%{$reset_color%}
@@ -23,4 +23,4 @@ PROMPT='%(?, ,%{$fg_bold[red]%}Fail ☣ $?%{$reset_color%}
 %{$fg_bold[red]%}%n%{$reset_color%}@%{$fg_bold[yellow]%}%m%{$reset_color%}: %{$fg_bold[cyan]%}%~%{$reset_color%}$(git_prompt_info)$(git_prompt_ahead)$(git_prompt_status)%{$reset_color%}
 %_$(prompt_char) '
 
-RPROMPT='%{$fg_bold[green]%}⌚ %*%{$reset_color%}'
+RPROMPT='%{$fg_bold[green]%}◷ %*%{$reset_color%}'

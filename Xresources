@@ -1,0 +1,24 @@
+! run 'xrdb -merge ~/X.resources' after changes
+
+! urxvt config
+urxvt*font: xft:Ubuntu Mono derivative Powerline:size=12:antialias=true:hinting:true
+urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:size=12:antialias=true:hinting:true
+urxvt*iconFile: /usr/share/icons/Humanity/apps/16/terminal.svg
+urxvt*letterSpace: -1
+urxvt*insecure: true
+
+
+urxvt*scrollstyle: plain
+urxvt*scrollBar_right: true
+!urxvt*loginShell: true
+urxvt*saveLines: 2048
+urxvt*cursorBlink:true
+urxvt*cursorUnderline:true
+
+urxvt*foreground: white
+urxvt*background: black
+
+urxvt*geometry: 100x32
+
+urxvt*iso14755: false
+urxvt*iso14755_52: false
