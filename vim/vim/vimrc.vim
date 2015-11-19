@@ -33,19 +33,21 @@ call vundle#rc()
 Bundle "gmarik/vundle"
 
 " Color Scheme
-Bundle "tomasr/molokai"
 Bundle "altercation/vim-colors-solarized"
 Bundle "chriskempson/base16-vim"
+Bundle "tomasr/molokai"
 
-Bundle "ejholmes/vim-forcedotcom"
-Bundle "tpope/vim-fugitive"
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'bling/vim-airline'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'ejholmes/vim-forcedotcom'
+Bundle 'mbbill/undotree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
-Bundle "bling/vim-airline"
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mbbill/undotree'
+Bundle 'vim-scripts/PreserveNoEOL'
 
 " }}}
 
@@ -221,9 +223,8 @@ set foldcolumn=2
 
 " }}}
 " Mappings {{{
-
 nnoremap <Space> <nop>
-let mapleader="\<Space>"
+let mapleader = "\<Space>"
 
 " Make CTRL+L clear hightlight as well as rediraw
 noremap <C-L> :nohls<CR><C-L>
@@ -254,10 +255,25 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" Generate Escape, to get back to Normal Mode
+imap jk <ESC>
+
 nnoremap <leader>rs :source ~/.vimrc<CR>
-nnoremap <leader>rt :tabnew ~/.vim/vimrc.vim<CR>
 nnoremap <leader>re :e ~/.vim/vimrc.vim<CR>
 nnoremap <leader>rd :e ~/.vim/<CR>
+
+" Save file easily
+nnoremap <leader>w :w<CR>
+
+" Copy & patest to system clipboard easily
+vmap <leader>y "+y
+vmap <leader>d "+d
+vmap <leader>p "+p
+vmap <leader>P "+P
+nmap <leader>p "+p
+nmap <leader>P "+P
+
+nmap <leader>ne :NERDTreeToggle<CR>
 
 " }}}
 " Filtypes {{{

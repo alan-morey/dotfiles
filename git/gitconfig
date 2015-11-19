@@ -18,7 +18,7 @@
 	di = diff
 	unstage = reset HEAD --
     undo-commit = reset --soft HEAD^
-    meld = !~/bin/git-meld.pl
+    meld = difftool --dir-diff
     br-desc = !~/bin/git-branch-desc.pl
 	count = shortlog -sn
     stashu = stash -u
