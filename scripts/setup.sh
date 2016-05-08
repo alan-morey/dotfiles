@@ -63,6 +63,9 @@ fi
 
 symlinkConfig zsh/zshrc $HOME/.zshrc
 symlinkConfig zsh/zshenv $HOME/.zshenv
+symlinkConfig Xresources $HOME/.Xresources
+symlinkConfig tmux/tmux $HOME/.tmux
+symlinkConfig tmux/tmux.conf $HOME/.tmux.conf
 
 if [ $OSX ] ; then
 	SUBLIME="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
