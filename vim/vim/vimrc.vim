@@ -1,55 +1,11 @@
-﻿" -----------------------------------------------------------
-" Vim Config
-" Alan Morey <morey.alan@gmail.com>
-" Version 2.0
-" 
-" Inspired by:
-" https://github.com/gmarik/vimfiles/blob/master/vimrc
-" https://github.com/gabebw/dotfiles
-" http://stevelosh.com/blog/2010/09/coming-home-to-vim/
-" https://github.com/akitaonrails/vimfiles
-" http://leetless.de/vimrc.txt
-" https://github.com/oryband/dotvim/blob/master/vimrc
-" -----------------------------------------------------------
-" Turn off vi compatibility
-set nocompatible
-
+﻿set nocompatible " Turn off vi compatibility
+let mapleader = "\<Space>"
 
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
-
-" Bundles {{{
-
-if !isdirectory(expand("~/.vim/bundle/vundle/.git"))
-  !git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-endif
-
-filetype off
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle "gmarik/vundle"
-
-" Color Scheme
-Bundle "altercation/vim-colors-solarized"
-Bundle "chriskempson/base16-vim"
-Bundle "tomasr/molokai"
-
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'bling/vim-airline'
-Bundle 'editorconfig/editorconfig-vim'
-Bundle 'ejholmes/vim-forcedotcom'
-Bundle 'mbbill/undotree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/PreserveNoEOL'
-
-" }}}
+source ~/.vim/bundles.vim
 
 " General {{{
 set fileencodings=utf-8,iso-8859-1
@@ -78,65 +34,33 @@ set undofile
 " }}}
 " Searching {{{
 
-" Highlight search
-set hlsearch
-
-" Show match for partly typed search
-set incsearch
-
-" Ignore case when searching
-set ignorecase
-
-" Override ignorecase when search has uppercase characters
-set smartcase
+set hlsearch " Highlight search
+set incsearch " Show match for partly typed search
+set ignorecase " Ignore case when searching
+set smartcase " Override ignorecase when search has uppercase characters
 
 " }}}
 " Displaying Text {{{
 
-" Dont wrap long lines
-set nowrap
 
+set nowrap " Dont wrap long lines
 set showbreak=...
-
-" Dont' display unprintable characters
-set nolist
+set nolist " Dont' display unprintable characters
 set listchars=tab:\ ·,eol:¬,trail:·,extends:»,precedes:«
-
-
-" Wrap on words
-set linebreak
-
-" How many colums a TAB counts for
-set tabstop=4
-
-" What happens when you indent with >>, << or ==
-set shiftwidth=4
-
-" Indent "shfitwidth" spced when <Tab> key pressed at front of line
-set smarttab
-
-" Number of spaces inserted when TAB is pressed
-set softtabstop=4
-
-" Insert spaces for TAB
-set expandtab
-
+set linebreak " Wrap on words
+set tabstop=4 " How many colums a TAB counts for
+set shiftwidth=4 " What happens when you indent with >>, << or ==
+set softtabstop=4 " Number of spaces inserted when TAB is pressed
+set smarttab " Indent "shfitwidth" spced when <Tab> key pressed at front of line
+set expandtab " Insert spaces for TAB
 set autoindent
-
-" Jump 5 lins when out of the screen
-set scrolljump=5
-
-" Indicate jump out of the screen when 3 lines before end of screen
-set scrolloff=5
-
+set scrolljump=5 " Jump 5 lins when out of the screen
+set scrolloff=5 " Indicate jump out of the screen when 3 lines before end of screen
 set sidescrolloff=5
 
 if has("gui_running")
-  " Show line number for each line if GUI
-  set number
- 
-  " Always show tabline if GUI
-  set showtabline=2
+  set number " Show line number for each line if GUI 
+  set showtabline=2 " Always show tabline if GUI
 
   if has("gui_macvim")
     set guifont=Ubuntu\ Mono\ derivative\ Powerline:h18
@@ -150,31 +74,25 @@ endif
 
 " Enable highlighting if color terminal or GUI
 if &t_Co > 2 || has("gui_running")
-  syntax on
   set background=dark
   if !has("gui_running")
-    let g:solarized_termcolors = 256 
     let base16colorspace=256
-"    set background=light
   endif
 
   colorscheme base16-eighties
 endif
 
 set cursorline
-
 set colorcolumn=80
 
 " }}}
 " Status & Command Line {{{
-" Show cursor position in status line
-set ruler
 
-" Store cmdline history
-set history=750
+set ruler " Show cursor position in status line
 
-" Always display status line
-set laststatus=2
+set history=750 " Store cmdline history
+
+set laststatus=2 " Always display status line
 
 let g:syntastic_enable_signs=1
 let g:systastic_auto_jump=1
@@ -190,58 +108,32 @@ let g:airline#extensions#tabline#enabled = 1
 "set statusline+=%*
 
 
-" Show mode in status line
-set showmode
-
-" Show incomplete commands 
-set showcmd
-
+set showmode " Show mode in status line
+set showcmd " Show incomplete commands 
 set wildmenu
-
 set wildmode=list,full
 
 " }}}
 " Editing Text {{{
 
-" Backspace can delete anything, including \n, in insert mode
-set backspace=indent,eol,start
-
-" When inserting a bracket, brefly jump to its match
-set showmatch
+set backspace=indent,eol,start " Backspace can delete anything, including \n, in insert mode
+set showmatch " When inserting a bracket, brefly jump to its match
 
 " }}}
 " Folding {{{
 
-" Enable folding
-set foldenable
-
-" Folding type
-set foldmethod=marker
-
-" Fold Column
-set foldcolumn=2
+set foldenable " Enable folding
+set foldmethod=marker " Folding type
+set foldcolumn=2 " Fold Column
 
 " }}}
 " Mappings {{{
 nnoremap <Space> <nop>
-let mapleader = "\<Space>"
 
-" Make CTRL+L clear hightlight as well as rediraw
-noremap <C-L> :nohls<CR><C-L>
-inoremap <C-L> <C-O>:nohls<CR>
-
-" Format lines
-nnoremap Q gq
-
-" Yank to end of line
-nnoremap Y y$
-
-" Toggle line numbering mode
-nmap <silent> <F11> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR>
-
-" Toggle Unprintable character listing
-map <silent> <F12> :set list!<CR>
-
+nnoremap Q gq " Format lines
+nnoremap Y y$ " Yank to end of line
+nmap <silent> <F11> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR> " Toggle line numbering mode
+map <silent> <F12> :set list!<CR> " Toggle Unprintable character listing
 
 " Disable Arrow keys to use proper vim navigation
 nnoremap <up> <nop>
@@ -255,8 +147,13 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
-" Generate Escape, to get back to Normal Mode
-imap jk <ESC>
+
+" Make CTRL+L clear hightlight as well as redraw
+noremap <C-L> :nohls<CR><C-L>
+inoremap <C-L> <C-O>:nohls<CR>
+
+
+imap jk <ESC> " Generate Escape, to get back to Normal Mode
 
 nnoremap <leader>rs :source ~/.vimrc<CR>
 nnoremap <leader>re :e ~/.vim/vimrc.vim<CR>
@@ -278,11 +175,7 @@ nmap <leader>ne :NERDTreeToggle<CR>
 " }}}
 " Filtypes {{{
 
-" Treat all files as unix(\n)
-set fileformats=unix,mac,dos
-
-filetype plugin on
-filetype indent on
+set fileformats=unix,mac,dos " Treat all files as unix(\n)
 
 " Necessary for multiple encodings
 set encoding=utf-8
