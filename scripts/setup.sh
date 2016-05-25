@@ -41,12 +41,8 @@ cd -
 symlinkConfig git/gitconfig $HOME/.gitconfig
 symlinkConfig git/global.gitignore $HOME/.gitignore_global
 
-symlinkConfig vim/vim $HOME/.vim
-symlinkConfig vim/vimrc $HOME/.vimrc
-
-
-echo "\033[0;33mVundle plugin already installed\033[0m"
-vim +BundleInstall! +qall
+symlinkConfig vim $HOME/.vim
+symlinkConfig vim/init.vim $HOME/.vimrc
 
 symlinkConfig bin $HOME/bin
 
