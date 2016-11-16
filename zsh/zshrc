@@ -25,7 +25,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git command-not-found git-extras svn gradle colored-man mvn node npm golang zsh-syntax-highlighting)
+plugins=(git command-not-found git-extras svn gradle colored-man mvn node npm golang zsh-syntax-highlighting vi-mode ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -36,6 +36,9 @@ alias gitk="gitk --all&"
 alias meld="$HOME/Applications/meld/bin/meld"
 
 export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
+
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
 
 # Base16 Shell
 BASE16_SCHEME="eighties"
