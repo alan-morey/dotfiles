@@ -6,5 +6,5 @@ set guioptions-=l " No left scrollbar
 set guioptions-=L " No left scrollbar, when vert split
 set guioptions+=c " Console dialogs
 
-set lines=40
-set columns=120
+"set lines=40
+"set columns=120

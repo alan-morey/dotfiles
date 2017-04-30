@@ -1,5 +1,3 @@
-nnoremap <Space> <nop>
-
 nnoremap Q gq " Format lines
 nnoremap Y y$ " Yank to end of line
 nmap <silent> <F11> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR> " Toggle line numbering mode
@@ -23,14 +21,14 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" Clear search highlighting
+nnoremap <leader><ESC> :nohlsearch<CR>
 
+" Generate Escape, to get back to Normal Mode
+imap jk <ESC>
 
-" Make  hightlight as well as redraw
-"noremap <C-L> :nohls<CR><C-L>
-"inoremap <C-L> <C-O>:nohls<CR>
-
-
-imap jk <ESC> " Generate Escape, to get back to Normal Mode
+" Leave default leader key mapping and bind <Space> to <leader> in addition
+map <SPACE> <leader>
 
 " Save file easily
 nnoremap <leader>w :w<CR>

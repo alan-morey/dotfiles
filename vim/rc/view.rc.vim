@@ -5,8 +5,11 @@ set linebreak " Wrap on words
 set showbreak=...
 set nowrap " Dont wrap long lines
 
+" Show current line number and others relative numbers
+set number
+set relativenumber
+
 if has("gui_running")
-  set number " Show line number for each line if GUI 
   set showtabline=2 " Always show tabline if GUI
 
   if has("gui_macvim")
@@ -59,6 +62,8 @@ set showmode " Show mode in status line
 set showcmd " Show incomplete commands 
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
 
 set splitbelow " Split window below current
 set splitright " Split widow to right of current

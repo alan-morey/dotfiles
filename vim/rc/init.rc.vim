@@ -1,5 +1,3 @@
-let mapleader='\<Space>'
-
 " FIXME do I really need this?
 "set fileencodings=utf-8,iso-8859-1
 
