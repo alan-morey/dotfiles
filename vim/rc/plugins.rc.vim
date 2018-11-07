@@ -9,15 +9,15 @@ call plug#begin()
 
 " Color Scheme
 Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
 
 Plug 'DavidEGx/ctrlp-smarttabs'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ejholmes/vim-forcedotcom'
-Plug 'fatih/vim-go'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mbbill/undotree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
@@ -28,7 +28,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/PreserveNoEOL'
-Plug 'will133/vim-dirdiff'
+Plug 'alan-morey/vim-dirdiff'
+Plug 'lambdalisue/vim-manpager'
 
 call plug#end()
 
@@ -55,4 +56,19 @@ let g:ctrlp_extensions = ['smarttabs']
 nmap ga <Plug>(EasyAlign)
 " Start interacive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
+
+" DirDiff
+let g:DirDiffExcludes=".*.swp,.git,.svn"
+let g:DirDiffAddArgs="-w"
+
+" Easymotion
+" Disable default mappings
+nmap <Leader>s let g:EasyMotion_do_mapping = 0 
+
+" Jump to anywhere with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap <Leader>s <Plug>(easymotion-overwin-f)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
 

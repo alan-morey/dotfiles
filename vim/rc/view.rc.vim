@@ -9,6 +9,17 @@ set nowrap " Dont wrap long lines
 set number
 set relativenumber
 
+" Automatically switch between relative non relative line numbering
+" - Relative for focused buffers and in normal mode
+" - Absolute for when in Insert or buffer loses focus or switch to another
+"   split
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+
+
 if has("gui_running")
   set showtabline=2 " Always show tabline if GUI
 
@@ -23,15 +34,21 @@ endif
 " Enable highlighting if color terminal or GUI
 if &t_Co > 2 || has("gui_running")
   set background=dark
+  
   if !has("gui_running")
     let base16colorspace=256
   endif
 
   try
-      colorscheme base16-eighties
+    " Default color scheme
+    colorscheme base16-eighties
   catch /^Vim\%((\a\+)\)\=:E185/
+    " Fallback to desert if can't load colorschemes
     colorscheme desert
   endtry
+
+"highlight! DiffChange term=bold ctermfg=8 ctermbg=9 guifg=#393939 guibg=#747369 
+  highlight! DiffChange term=bold cterm=bold ctermfg=0 ctermbg=4 guifg=#393939 guibg=#747369 
 endif
 
 set cursorline " Highlight line cursor is on

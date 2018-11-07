@@ -3,6 +3,12 @@ nnoremap Y y$ " Yank to end of line
 nmap <silent> <F11> :exec &nu==&rnu? "se nu!" : "se rnu!"<CR> " Toggle line numbering mode
 map <silent> <F12> :set list!<CR> " Toggle Unprintable character listing
 
+
+" Open commandline window instead of commandline
+nnoremap : q:i
+nnoremap / q/i
+nnoremap ? q?i
+
 " Disable Arrow keys to use proper vim navigation
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -21,8 +27,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-" Clear search highlighting
-nnoremap <leader><ESC> :nohlsearch<CR>
+" Clear search highlighting and/or redraw screen
+nnoremap <leader><ESC> :nohlsearch \| :redraw!<CR>
 
 " Generate Escape, to get back to Normal Mode
 imap jk <ESC>
@@ -46,4 +52,10 @@ vmap <leader>P "+P
 nmap <leader>p "+p
 nmap <leader>P "+P
 
-nmap <leader>ne :NERDTreeToggle<CR>
+" Paste from system clipboard - Replace All
+vmap <leader>pa ggdG"+p 
+nmap <leader>pa ggdG"+p
+
+nmap <leader>ne :NERDTreeFocus<CR>
+nmap <leader>nc :NERDTreeClose<CR>
+nmap <leader>nf :NERDTreeFind<CR>
