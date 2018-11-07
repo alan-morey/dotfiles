@@ -232,8 +232,11 @@ BASE16_SCHEME="eighties"
 BASE16_SHELL="$HOME/dotfiles/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/alan.morey/.sdkman"
-[[ -s "/home/alan.morey/.sdkman/bin/sdkman-init.sh" ]] && source "/home/alan.morey/.sdkman/bin/sdkman-init.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/alan.morey/.sdkman"
+SDKMAN_INIT="$SDKMAN_DIR/bin/sdkman-init.sh"
+[[ -s "$SDKMAN_INIT" ]] && source "$SDKMAN_INIT"
+
