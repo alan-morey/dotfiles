@@ -44,6 +44,8 @@ symlinkConfig git/global.gitignore $HOME/.gitignore_global
 symlinkConfig vim $HOME/.vim
 symlinkConfig vim/init.vim $HOME/.vimrc
 
+symlinkConfig i3 $HOME/.config/i3
+
 symlinkConfig bin $HOME/bin
 
 if [ ! -d ~/oh-my-zsh ] ; then

@@ -1,8 +1,15 @@
-! run 'xrdb -merge ~/X.resources' after changes
+! run 'xrdb -merge ~/.Xresources' after changes
 
 ! urxvt config
-urxvt*font: xft:Ubuntu Mono derivative Powerline:size=12:antialias=true:hinting:true
-urxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:size=12:antialias=true:hinting:true
+! Font names may not be same as font file name, use fc-list to find out
+!urxvt*font: xft:UbuntuMonoDerivativePowerline Nerd Font:size=14:antialias=true:hinting:true
+!urxvt*boldFont: xft:UbuntuMonoDerivativePowerline Nerd Font:bold:size=14:antialias=true:hinting:true
+!urxvt*font: xft:FuraCode Nerd Font:size=12:antialias=true:hinting:true
+!urxvt*boldFont: xft:FuraCode Nerd Font:bold:size=12:antialias=true:hinting:true
+
+urxvt*font: xft:Knack Nerd Font:size=12:antialias=true:hinting:true
+urxvt*boldFont: xft:Knack Nerd Font:bold:size=12:antialias=true:hinting:true
+
 urxvt*iconFile: /usr/share/icons/Humanity/apps/16/terminal.svg
 urxvt*letterSpace: -1
 urxvt*insecure: true
