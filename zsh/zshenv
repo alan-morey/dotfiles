@@ -1,10 +1,33 @@
 export EDITOR="vim"
 export VISUAL="$EDITOR"
-export TERM=xterm-256color
 
 export TOOLS_PATH=$HOME/Tools
-export JAVA_HOME=/usr/lib/jvm/java-7-oracle
-export GRADLE_HOME=$TOOLS_PATH/gradle-1.6
-export GROOVY_HOME=$TOOLS_PATH/groovy-2.1.5
-export DART_HOME=$TOOLS_PATH/dart-sdk
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:~/bin:$GROOVY_HOME/bin:$GRADLE_HOME/bin:$DART_HOME/bin
+export ANT_OPTS="-Dhttps.protocols=TLSv1.1,TLSv1.2"
+export ANT_HOME=$TOOLS_PATH/apache-ant-1.10.5
+
+
+MELD_BIN=$HOME/repos/meld/bin
+
+PATH=$MELD_BIN:$PATH:$ANT_HOME/bin
+
+
+# Expand $PATH to include additional paths if not already set
+HOME_BIN=$HOME/bin
+if [ -n "${PATH##*${HOME_BIN}}" -a -n "${PATH##*${HOME_BIN}:*}" ]; then
+    PATH=$PATH:$HOME_BIN
+fi
+
+
+NPM_PACKAGES_BIN=$HOME/.npm-packages/bin
+if [ -n "${PATH##*${NPM_PACKAGES_BIN}}" -a -n "${PATH##*${NPM_PACKAGES_BIN}:*}" ]; then
+    PATH=$PATH:$NPM_PACKAGES_BIN
+fi
+
+export PATH
+
+# Does ligtdm need to be in path?
+#/usr/lib/lightdm/lightdm
+
+
+unset MANPATH
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"

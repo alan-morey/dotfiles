@@ -42,18 +42,19 @@ SPACESHIP_PROMPT_ORDER=(
   dir           # Current directory section
   host          # Hostname section
   git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
+  #hg            # Mercurial section (hg_branch  + hg_status)
   package       # Package version
   node          # Node.js section
   #ruby          # Ruby section
   #elixir        # Elixir section
   #xcode         # Xcode section
   #swift         # Swift section
-  golang        # Go section
+  #golang        # Go section
   #php           # PHP section
   #rust          # Rust section
   #haskell       # Haskell Stack section
   #julia         # Julia section
+  #sfdx          # SFDX usernames
   docker        # Docker section
   #aws           # Amazon Web Services section
   #venv          # virtualenv section
@@ -70,21 +71,18 @@ SPACESHIP_RPROMPT_ORDER=(
   jobs          # Background jobs indicator
   exec_time     # Execution time
   exit_code     # Exit code section
-  kubecontext   # Kubectl context section
+  #kubecontext   # Kubectl context section
   battery       # Battery level and status
   time          # Time stampts section
 )
 
 
 
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator context dir vcs)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode background_jobs time status)
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -99,117 +97,35 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-    git
+    #git
     command-not-found
     git-extras
     svn
-    gradle 
-    colored-man 
+    extract
+    gradle
+    colored-man-pages
     mvn
-    node 
+    node
     npm
-    golang
+    #golang
     zsh-syntax-highlighting
     vi-mode
     ssh-agent
     ant
-    sfdx
+    #sfdx
     zsh-completions
 )
+
 autoload -U compinit && compinit
 
+unsetopt all_export
 source $ZSH/oh-my-zsh.sh
 
-##POWERLEVEL9K_BACKGROUND_JOBS_ICON='\uf013'
-##POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
-##POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
-##POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
-##POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
-##POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
-##POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
-##POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
-##POWERLEVEL9K_STATUS_OK_BACKGROUND="black"
-##POWERLEVEL9K_STATUS_OK_FOREGROUND="green"
-##POWERLEVEL9K_STATUS_ERROR_BACKGROUND="black"
-##POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
-##POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=false
-##POWERLEVEL9K_TIME_FORMAT="%D{\uf073 %d.%m.%y}"
-##POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator context dir vcs)
-##POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode background_jobs time status)
-##POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
-##POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-##POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-##POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-##POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\u256D\U2500"
-##POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="\u2570\U2500 "
-##POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX=" \uf017 `date +%T` ❯ "
-##
-#POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-#POWERLEVEL9K_VCS_STAGED_ICON="\u00b1"
-#POWERLEVEL9K_VCS_UNTRACKED_ICON="\u25CF"
-#POWERLEVEL9K_VCS_UNSTAGED_ICON="\u00b1"
-#POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON="\u2193"
-#POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON="\u2191"
-#POWERLEVEL9K_SHOW_CHANGESET="false"
-#POWERLEVEL9K_CHANGESET_HASH_LENGTH="12"
-#POWERLEVEL9K_VCS_MODIFIED_BACKGROUND="clear"
-#POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="clear"
-#POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="yellow"
-#POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="yellow"
-#POWERLEVEL9K_DIR_HOME_BACKGROUND="clear"
-#POWERLEVEL9K_DIR_HOME_FOREGROUND="blue"
-#POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="clear"
-#POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="blue"
-#POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="clear"
-#POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
-#POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND="red"
-#POWERLEVEL9K_ROOT_INDICATOR_FOREGROUND="white"
-#POWERLEVEL9K_TODO_BACKGROUND="clear"
-#POWERLEVEL9K_TODO_FOREGROUND="green"
-#POWERLEVEL9K_OS_ICON_BACKGROUND="yellow"
-#POWERLEVEL9K_OS_ICON_FOREGROUND="black"
-#POWERLEVEL9K_HISTORY_BACKGROUND="clear"
-#POWERLEVEL9K_HISTORY_FOREGROUND="blue"
-#POWERLEVEL9K_STATUS_OK_BACKGROUND="clear"
-#POWERLEVEL9K_STATUS_OK_FOREGROUND="green"
-#POWERLEVEL9K_STATUS_ERROR_BACKGROUND="clear"
-#POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
-#POWERLEVEL9K_LOAD_CRITICAL_BACKGROUND="clear"
-#POWERLEVEL9K_LOAD_WARNING_BACKGROUND="clear"
-#POWERLEVEL9K_LOAD_NORMAL_BACKGROUND="clear"
-#POWERLEVEL9K_LOAD_CRITICAL_FOREGROUND="red"
-#POWERLEVEL9K_LOAD_WARNING_FOREGROUND="yellow"
-#POWERLEVEL9K_LOAD_NORMAL_FOREGROUND="green"
-#POWERLEVEL9K_LOAD_CRITICAL_VISUAL_IDENTIFIER_COLOR="red"
-#POWERLEVEL9K_LOAD_WARNING_VISUAL_IDENTIFIER_COLOR="yellow"
-#POWERLEVEL9K_LOAD_NORMAL_VISUAL_IDENTIFIER_COLOR="green"
-#POWERLEVEL9K_RAM_BACKGROUND="clear"
-#POWERLEVEL9K_RAM_FOREGROUND="green"
-#POWERLEVEL9K_RAM_ELEMENTS="ram_free"
-#POWERLEVEL9K_TIME_BACKGROUND="clear"
-#POWERLEVEL9K_TIME_FOREGROUND="white"
-#POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S} %{%F{green}%}\uf073%{%F{default}%} %D{%d.%m.%y}"
-#POWERLEVEL9K_STATUS_VERBOSE="true"
-#POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND="black"
-#POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND="green"
-#POWERLEVEL9K_VI_COMMAND_MODE_STRING="\ue7c5" # Vim icon
-#POWERLEVEL9K_VI_INSERT_MODE_STRING=""
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator os_icon context dir vcs)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs status vi_mode)
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="\u250f "
-## FIXME
-#POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="\u2517$(prompt_time left 1)%{%F{default}%}❯ "
-
-
-
-# Customize to your needs...
 
 alias mvn="mvn-color"
 alias gitk="gitk --all&"
 alias pmd="/opt/pmd-bin-6.0.0/bin/run.sh pmd"
+alias vim="nvim"
 
 export ANT_ARGS='-logger org.apache.tools.ant.listener.AnsiColorLogger'
 
@@ -227,6 +143,18 @@ function vimdirdiff() {
     vim $@ -c "DirDiff $LEFT_DIR $RIGHT_DIR"
 }
 
+function getWorkMachineIPOnVpn {
+    local interface=${1:-tun0}
+    local ipRange=$(ip -o -4 addr show $interface | awk '{print $4}')
+    local ip=$(echo $ipRange | cut -f1 -d/)
+
+    nmap -Pn -p 22 -oG - --open $ipRange --exclude $ip | awk '/22\/open/{print $2}'
+}
+
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
 # Base16 Shell
 BASE16_SCHEME="eighties"
 BASE16_SHELL="$HOME/dotfiles/base16-shell/base16-$BASE16_SCHEME.dark.sh"
@@ -235,8 +163,11 @@ BASE16_SHELL="$HOME/dotfiles/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# sfdx autocomplete setup
+SFDX_AC_ZSH_SETUP_PATH="$HOME/.cache/sfdx/autocomplete/zsh_setup"
+[[ -f $SFDX_AC_ZSH_SETUP_PATH ]] && source $SFDX_AC_ZSH_SETUP_PATH
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/alan.morey/.sdkman"
+export SDKMAN_DIR="$HOME/.sdkman"
 SDKMAN_INIT="$SDKMAN_DIR/bin/sdkman-init.sh"
 [[ -s "$SDKMAN_INIT" ]] && source "$SDKMAN_INIT"
-
