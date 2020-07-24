@@ -2,6 +2,9 @@
 	name = Alan Morey
 	email = morey.alan@gmail.com
 
+[include]
+    path = ~/.gitconfig.local
+
 [merge]
     tool = meld
 
@@ -22,7 +25,7 @@
     br-desc = !~/bin/git-branch-desc.pl
 	count = shortlog -sn
     stashu = stash -u
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit
 
 [color]
 	diff = auto
@@ -38,13 +41,29 @@
 
 [core]
     excludesfile = ~/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
-[include]
-    path = ~/.gitconfig.local
+
 [push]
 	default = simple
+
 [diff "daff-csv"]
 	command = daff diff --git
+
 [merge "daff-csv"]
 	name = daff tabular csv merge
 	driver = daff merge --output %A %O %A %B
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
