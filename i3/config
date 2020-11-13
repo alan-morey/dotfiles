@@ -28,10 +28,11 @@ set $tag8 "8: "
 set $tag9 "9: "
 set $tag0 "0: "
 
+set $lock "$HOME/.config/i3/i3lock-pixelated.sh"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pange:Hack Nerd Font Mono 200
 
 #Base16 Eighties colors
 set $base00 #2d2d2d
@@ -77,8 +78,13 @@ floating_modifier $mod
 # Don't focus windows when mouse is moved
 focus_follows_mouse no
 
+# Marks
+show_marks yes
+bindsym $mod+m exec "i3-input -F 'mark %s' -P 'Mark name: '"
+bindsym $mod+Shift+m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -89,9 +95,6 @@ bindsym $mod+d exec dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-bindsym $mod+tab workspace back_and_forth
-
 
 # change focus
 bindsym $mod+h focus left
@@ -167,11 +170,14 @@ bindsym $mod+Shift+8 move container to workspace $tag8
 bindsym $mod+Shift+9 move container to workspace $tag9
 bindsym $mod+Shift+0 move container to workspace $tag0
 
-# move workspace
+# Move workspace to output
 bindsym $mod+Mod1+h move workspace to output left
 bindsym $mod+Mod1+j move workspace to output down 
 bindsym $mod+Mod1+k move workspace to output up 
 bindsym $mod+Mod1+l move workspace to output right 
+
+bindsym Mod1+Tab workspace back_and_forth
+bindsym $mod+Tab exec $HOME/.config/i3/display-swap.sh
 
 
 # reload the configuration file
@@ -180,6 +186,24 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id $HOME/bin/mic-toggle.sh
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+# Lock screen
+bindsym XF86ScreenSaver exec $lock
+bindsym $mod+Delete exec $lock
+bindsym control+Mod1+Delete exec $lock 
+
+# Lock screen after 10 minutes inactivity
+exec --no-startup-id xautolock -time 10 -locker $lock
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -233,14 +257,6 @@ bar {
     }
 }
 
-# Lock screen
-bindsym XF86ScreenSaver exec ~/.config/i3/i3lock.sh
-bindsym $mod+Delete exec ~/.config/i3/i3lock.sh
-bindsym control+Mod1+Delete exec ~/.config/i3/i3lock.sh
-
-# Lock screen after 10 minutes inactivity
-exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/i3lock.sh
-
 # Assignments
 assign [class="Firefox"] $ws2Web
 assign [class="Chromium"] $ws2Web
@@ -254,3 +270,5 @@ assign [class="Signal"] $ws1Msg
 no_focus [class="Chromium"] 
 focus_on_window_activation urgent
 
+
+#exec_always --no-startup-id $HOME/.config/i3/trackpad.sh

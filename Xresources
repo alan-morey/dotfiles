@@ -7,8 +7,8 @@
 !urxvt*font: xft:FuraCode Nerd Font:size=12:antialias=true:hinting:true
 !urxvt*boldFont: xft:FuraCode Nerd Font:bold:size=12:antialias=true:hinting:true
 
-urxvt*font: xft:Knack Nerd Font:size=12:antialias=true:hinting:true
-urxvt*boldFont: xft:Knack Nerd Font:bold:size=12:antialias=true:hinting:true
+urxvt*font: xft:Hack Nerd Font Mono:size=12:antialias=true:hinting:true
+urxvt*boldFont: xft:Hack Nerd Font Mono:bold:size=12:antialias=true:hinting:true
 
 urxvt*iconFile: /usr/share/icons/Humanity/apps/16/terminal.svg
 urxvt*letterSpace: -1
