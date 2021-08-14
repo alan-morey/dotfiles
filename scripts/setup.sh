@@ -52,25 +52,8 @@ if [ ! -d ~/oh-my-zsh ] ; then
 	curl -s -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
 fi
 
-MY_ZSH_THEME=morey.zsh-theme
-if [ -f $HOME/.oh-my-zsh/themes/morey.zsh-theme ] ; then
-    echo "\033[0;33m$MY_ZSH_THEME already installed.\033[0m"
-else
-    symlinkConfig zsh/$MY_ZSH_THEME $HOME/.oh-my-zsh/themes/$MY_ZSH_THEME
-fi
-
 symlinkConfig zsh/zshrc $HOME/.zshrc
 symlinkConfig zsh/zshenv $HOME/.zshenv
 symlinkConfig Xresources $HOME/.Xresources
 symlinkConfig tmux/tmux $HOME/.tmux
 symlinkConfig tmux/tmux.conf $HOME/.tmux.conf
-
-if [ $OSX ] ; then
-	SUBLIME="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
-elif [ $LINUX ] ; then
-	SUBLIME="$HOME/.config/sublime-text-2/Packages/User"
-fi
-symlinkConfig sublime $SUBLIME
-
-POWERLINE_FONTS_INSTALL="$HOME/dotfiles/powerline-fonts/install.sh"
-[[ -s $POWERLINE_FONTS_INSTALL ]] && . $POWERLINE_FONTS_INSTALL
