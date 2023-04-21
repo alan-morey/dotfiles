@@ -7,6 +7,7 @@
 
 [merge]
     tool = meld
+    conflictstyle = diff3
 
 [mergetool]
     keepBackup = false
@@ -19,9 +20,12 @@
 	st = status -sb
 	br = branch
 	di = diff
+    staged = diff --staged
+    changed = diff --name-status
+    meld = difftool --dir-diff
+    dt = difftool --dir-diff
 	unstage = reset HEAD --
     undo-commit = reset --soft HEAD^
-    meld = difftool --dir-diff
     br-desc = !~/bin/git-branch-desc.pl
 	count = shortlog -sn
     stashu = stash -u
@@ -41,7 +45,7 @@
 
 [core]
     excludesfile = ~/.gitignore_global
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = diff-so-fancy | less --tabs=4 -RFX
 
 
 [push]
