@@ -35,6 +35,8 @@ SPACESHIP_USER_SHOW="always"
 SPACESHIP_DIR_COLOR="blue"
 SPACESHIP_DIR_PREFIX="%F{$SPACESHIP_DIR_COLOR}\uf07c%f "
 SPACESHIP_CHAR_SYMBOL="\ue601 "
+SPACESHIP_NODE_SYMBOL="\ue718 "
+SPACESHIP_PACKAGE_SYMBOL="\uf436 "
 
 
 SPACESHIP_PROMPT_ORDER=(
@@ -106,6 +108,7 @@ plugins=(
     colored-man-pages
     mvn
     node
+    extract
     npm
     #golang
     zsh-syntax-highlighting
@@ -166,6 +169,9 @@ BASE16_SHELL="$HOME/dotfiles/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 # sfdx autocomplete setup
 SFDX_AC_ZSH_SETUP_PATH="$HOME/.cache/sfdx/autocomplete/zsh_setup"
 [[ -f $SFDX_AC_ZSH_SETUP_PATH ]] && source $SFDX_AC_ZSH_SETUP_PATH
+
+SF_AC_ZSH_SETUP_PATH="$HOME/.cache/sf/autocomplete/zsh_setup"
+[[ -f $SF_AC_ZSH_SETUP_PATH ]] && source $SF_AC_ZSH_SETUP_PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
